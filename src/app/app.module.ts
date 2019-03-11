@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingModule } from './booking/booking.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BookingModule } from './booking/booking.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    BookingModule
+    BookingModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

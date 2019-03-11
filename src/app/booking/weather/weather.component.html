@@ -1,3 +1,11 @@
-<p>
-  weather works!
-</p>
+<mat-card>
+  <mat-card-title>
+    Weather
+  </mat-card-title>
+  <mat-card-content>
+    <p *ngIf='isLoading'>Loading...</p>
+    <h2>{{weather && weather.wind}}</h2>
+    <h2>{{weather && weather.temperature}}</h2>
+    <h3>Fallouts:</h3> 
+  </mat-card-content>
+</mat-card>

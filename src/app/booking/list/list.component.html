@@ -7,7 +7,7 @@
               <span> {{hotel.address}} </span>
             </p>
             <p matLine>
-              <star-rating [readOnly]='true' [rating]='2' [starType]="'icon'"></star-rating>
+              <star-rating [readOnly]='true' [rating]='hotel.stars' [starType]="'svg'"></star-rating>
             </p>
             <p matLine>
                 <span> {{hotel.phone}} </span>

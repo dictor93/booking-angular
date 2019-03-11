@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiMethodsService } from './api-methods.service';
 import { IHotel } from './interfaces/ihotel';
+import { IProfile } from './interfaces/iprofile';
+import { IWeather } from './interfaces/iweather';
+
 
 @Component({
   selector: 'app-booking',
@@ -8,8 +11,9 @@ import { IHotel } from './interfaces/ihotel';
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-  public hotels;
+  public hotels: IHotel[];
   public selectedHotelId: number;
+  public currentHotel: IHotel;
   public isLoading: boolean;
   constructor(private apiMethodsService: ApiMethodsService) {
 
@@ -17,18 +21,27 @@ export class BookingComponent implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     this.apiMethodsService.getHotels().subscribe(
-      hotels => {
-        console.log(hotels)
+      (hotels: IHotel[]) => {
+        console.log(hotels);
         this.hotels = hotels;
-        this.hotels.length > 0 && (this.selectedHotelId = hotels[0]);
+        if(this.hotels.length > 0) {
+          this.selectedHotelId = hotels[0].id;
+          this.currentHotel = hotels[0];
+         
+        };
+        
         this.isLoading = false;
       },
-      console.log
+      error => {
+        this.isLoading = false;
+        console.log(error);
+      }
     );
   }
 
-  public changeHotel(e: number){
-    this.selectedHotelId = e;
+  public changeHotel(id: number) {
+    this.selectedHotelId = id;
+    this.currentHotel = this.hotels.find((hotel: IHotel) => id === hotel.id);
   }
 
 }

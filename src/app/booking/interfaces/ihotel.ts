@@ -1,3 +1,6 @@
+import {IWeather} from './iweather';
+import {IProfile} from './iprofile';
+
 export interface IHotel {
   id: number;
   title: string;
@@ -6,11 +9,7 @@ export interface IHotel {
   phone: string;
   picture: string;
   photos: string[];
-  weather: {
-    [key: string]: string | number;
-  };
-  profile: {
-    [key: string]: string | number;
-  };
+  weather: IWeather;
+  profile: IProfile;
   stars: number;
 }

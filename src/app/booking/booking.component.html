@@ -10,6 +10,7 @@
         </mat-card-content>
     </mat-card>
     <div>
-
+      <app-weather [weather]='currentHotel && currentHotel.weather' [isLoading]=isLoading></app-weather>
+      <app-detail [detail]='currentHotel && currentHotel.profile' [isLoading]=isLoading></app-detail>
     </div>
 </div>
