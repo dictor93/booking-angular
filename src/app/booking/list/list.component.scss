@@ -8,5 +8,12 @@
     &::-webkit-scrollbar-thumb { height: 50px; background-color: coral; border-radius: 3px;}
     &::-webkit-scrollbar-corner { background-color: #999;}
     &::-webkit-resizer { background-color: #666;}
+
+    .hotels-item {
+        &:hover {
+            cursor: pointer;
+            background-color: rgba($color: #FFFFFF, $alpha: 0.18)
+        }
+    }
 }
 

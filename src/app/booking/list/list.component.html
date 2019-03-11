@@ -1,16 +1,19 @@
 <div class="list-wraper">
-    <mat-list>
-        <mat-list-item *ngFor='let hotel of hotels' (click)="selectHotel(hotel.id)">
-            <img matListAvatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="...">
+    <mat-list >
+        <mat-list-item class="hotels-item" *ngFor='let hotel of hotels' (click)="selectHotel(hotel.id)">
+            <img *ngFor='let photo of hotel.photos' matListAvatar [src]="photo" alt="...">
             <h3 matLine> {{hotel.title}} </h3>
             <p matLine>
-              <span> {{hotel.address}} </span>
+              {{hotel.address}}
             </p>
             <p matLine>
               <star-rating [readOnly]='true' [rating]='hotel.stars' [starType]="'svg'"></star-rating>
             </p>
             <p matLine>
-                <span> {{hotel.phone}} </span>
+              {{hotel.description}}
+            </p>
+            <p matLine>
+              {{hotel.phone}}
             </p>
         </mat-list-item>
     </mat-list>

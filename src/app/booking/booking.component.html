@@ -2,15 +2,15 @@
 
 <div class="booking-content">
     <mat-card class="hotels-card">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="currentHotel?.picture" alt="Loading...">
         <mat-card-content>
           <h2>Hotels list</h2>
           <p *ngIf='isLoading'>Loading...</p>
           <app-list (onHotelChange)='changeHotel($event)' [hotels]='hotels'></app-list>
         </mat-card-content>
     </mat-card>
-    <div>
-      <app-weather [weather]='currentHotel && currentHotel.weather' [isLoading]=isLoading></app-weather>
-      <app-detail [detail]='currentHotel && currentHotel.profile' [isLoading]=isLoading></app-detail>
+    <div class="addons-container">
+      <app-weather [weather]='currentHotel?.weather' [isLoading]=isLoading></app-weather>
+      <app-detail [detail]='currentHotel?.profile' [isLoading]=isLoading></app-detail>
     </div>
 </div>

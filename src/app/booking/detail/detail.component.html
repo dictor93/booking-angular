@@ -1,3 +1,23 @@
 <mat-card>
   <p *ngIf='isLoading'>Loading...</p>
+  <mat-card-title>Lorem ipsum</mat-card-title>
+  <img mat-card-image [src]='detail?.photo'>
+  <mat-card-footer class="detail-footer">
+    <div>
+      <p>
+        <strong>{{detail?.followers}}</strong>
+      </p>
+      <p>
+        followers
+      </p>
+    </div>
+    <div>
+      <p>
+        <strong>{{detail?.following}}</strong>
+      </p>
+      <p>
+        following
+      </p>
+    </div>
+  </mat-card-footer>
 </mat-card>

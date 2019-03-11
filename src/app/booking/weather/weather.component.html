@@ -1,11 +1,11 @@
-<mat-card>
+<mat-card class="weather-card">
   <mat-card-title>
     Weather
   </mat-card-title>
   <mat-card-content>
     <p *ngIf='isLoading'>Loading...</p>
-    <h2>{{weather && weather.wind}}</h2>
-    <h2>{{weather && weather.temperature}}</h2>
-    <h3>Fallouts:</h3> 
+    <h1 class="weather-icon"><i class="material-icons">pool</i>{{weather?.wind}}<sup>°</sup></h1>
+    <h1 class="weather-icon"><i class="material-icons">{{(weather?.temperature > 0) ? "brightness_high" : "ac_unit" }}</i>{{weather?.temperature}}<sup>°</sup></h1>
+    <h3>Fallouts: {{weather?.icon}}</h3> 
   </mat-card-content>
 </mat-card>

@@ -1,0 +1,9 @@
+.weather-card{
+    min-width: 150px;
+    .weather-icon {
+        font-size: 32px;
+        > i {
+            font-size: 40px;
+        }
+    }
+}
