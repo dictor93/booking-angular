@@ -1,0 +1,19 @@
+@import '~css-star-rating/scss/star-rating';
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    color: #fff;
+    margin: 3em 0em 2em 0em;
+}
+
+.booking-content {
+    margin: auto;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hotels-card {
+    width: 250px;
+}

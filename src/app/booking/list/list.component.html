@@ -1,0 +1,18 @@
+<div class="list-wraper">
+    <mat-list>
+        <mat-list-item *ngFor='let hotel of hotels' (click)="selectHotel(hotel.id)">
+            <img matListAvatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="...">
+            <h3 matLine> {{hotel.title}} </h3>
+            <p matLine>
+              <span> {{hotel.address}} </span>
+            </p>
+            <p matLine>
+              <star-rating [readOnly]='true' [rating]='2' [starType]="'icon'"></star-rating>
+            </p>
+            <p matLine>
+                <span> {{hotel.phone}} </span>
+            </p>
+        </mat-list-item>
+    </mat-list>
+    
+</div>
