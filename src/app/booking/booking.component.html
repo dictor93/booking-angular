@@ -1,16 +1,25 @@
 <h1 class='title'>Booking Widget</h1>
-
-<div class="booking-content">
+<mat-grid-list class="booking-content" [cols]='5' rowHeight='710px' (window:resize)="onResize($event)">
+  <mat-grid-tile [colspan]='listBreakpoint'>
     <mat-card class="hotels-card">
-        <img mat-card-image [src]="currentHotel?.picture" alt="Loading...">
-        <mat-card-content>
-          <h2>Hotels list</h2>
-          <p *ngIf='isLoading'>Loading...</p>
-          <app-list (onHotelChange)='changeHotel($event)' [hotels]='hotels'></app-list>
-        </mat-card-content>
+      <img mat-card-image [src]="currentHotel?.picture" alt="Loading...">
+      <mat-form-field appearance="outline" color='primary' class="search-field">
+        <input matInput placeholder="Serch hotels" (input)="search($event)">
+      </mat-form-field>
+      <p matLine>
+        <star-rating [starType]="'svg'" size='large' (ratingChange)="setStarsSort($event)" ></star-rating>
+      </p>
+      <mat-card-content>
+        <h2>Hotels list</h2>
+        <p *ngIf='isLoading'>Loading...</p>
+        <app-list (onHotelChange)='changeHotel($event)' [searchText]=searchText [starsSort]='starsSort' [hotels]='hotels'></app-list>
+      </mat-card-content>
     </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]='addonsBreakpoint'>
     <div class="addons-container">
-      <app-weather [weather]='currentHotel?.weather' [isLoading]=isLoading></app-weather>
-      <app-detail [detail]='currentHotel?.profile' [isLoading]=isLoading></app-detail>
+      <app-weather [weather]='currentHotel?.weather' style="width: 100%" [isLoading]=isLoading></app-weather>
+      <app-detail [detail]='currentHotel?.profile' style="width: 100%" [isLoading]=isLoading></app-detail>
     </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list>

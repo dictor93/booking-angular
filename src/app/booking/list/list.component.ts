@@ -13,6 +13,12 @@ export class ListComponent implements OnInit {
   @Input()
   public hotels: IHotel;
 
+  @Input()
+  public starsSort: number;
+
+  @Input()
+  public searchText: string;
+
   @Output() onHotelChange = new EventEmitter<number>();
   selectHotel: (id: number) => void = (id: number) => {
     this.onHotelChange.emit(id);

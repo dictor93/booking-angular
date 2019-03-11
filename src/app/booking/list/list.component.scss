@@ -1,6 +1,6 @@
 .list-wraper {
     overflow-y: scroll;
-    max-height: 300px;
+    height: 250px;
     &::-webkit-scrollbar { width: 3px; height: 3px; }
     &::-webkit-scrollbar-button {  background-color: #666; height: 0; }
     &::-webkit-scrollbar-track {  background-color: #999;}
