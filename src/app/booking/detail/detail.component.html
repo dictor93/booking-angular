@@ -2,19 +2,15 @@
   <p *ngIf='isLoading'>Loading...</p>
   <mat-card-title>Lorem ipsum</mat-card-title>
   <img mat-card-image [src]='detail?.photo'>
-  <mat-card-footer class="detail-footer">
-    <div>
-      <p>
-        <strong>{{detail?.followers}}</strong>
-      </p>
+  <mat-card-footer fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <strong>{{detail?.followers}}</strong>
       <p>
         followers
       </p>
     </div>
-    <div>
-      <p>
-        <strong>{{detail?.following}}</strong>
-      </p>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <strong>{{detail?.following}}</strong>
       <p>
         following
       </p>

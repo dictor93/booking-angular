@@ -4,14 +4,17 @@ import { BookingComponent } from './booking.component';
 import { ListComponent } from './list/list.component';
 import { WeatherComponent } from './weather/weather.component';
 import { DetailComponent } from './detail/detail.component';
-import { MatCardModule, MatGridListModule, MatListModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatCardModule, MatGridListModule, MatListModule, MatInputModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
 import { ApiMethodsService } from './api-methods.service';
 import {StarRatingModule} from 'angular-star-rating';
 import { FilterPipe } from './pipes/filter.pipe';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { BookedFilterPipe } from './pipes/booked-filter.pipe';
+import { BookedListComponent } from './booked-list/booked-list.component';
 
 
 @NgModule({
-  declarations: [BookingComponent, ListComponent, WeatherComponent, DetailComponent, FilterPipe],
+  declarations: [BookingComponent, ListComponent, WeatherComponent, DetailComponent, FilterPipe, BookedFilterPipe, BookedListComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -20,6 +23,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     StarRatingModule.forRoot(),
     MatInputModule,
     MatFormFieldModule,
+    FlexLayoutModule,
+    MatButtonModule,
   ],
   exports: [
     BookingComponent,

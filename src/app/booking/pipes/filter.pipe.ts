@@ -6,10 +6,12 @@ import {IHotel} from '../interfaces/ihotel';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(products: IHotel[], stars: number, text: string): IHotel[] {
-    return products
-    .filter(product => stars ? (product.stars === stars) : true )
-    .filter(product => text ? (`${product.title} ${product.description}`.toLowerCase().includes(text.toLowerCase())) : true)
+  transform(hotels: IHotel[], stars: number, text: string): IHotel[] {
+    return hotels
+    ? hotels
+    .filter(hotel => stars ? (hotel.stars === stars) : true )
+    .filter(hotel => text ? (`${hotel.title} ${hotel.description}`.toLowerCase().includes(text.toLowerCase())) : true)
+    : hotels;
   }
 
 }

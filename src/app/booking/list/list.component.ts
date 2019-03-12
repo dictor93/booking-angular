@@ -24,10 +24,15 @@ export class ListComponent implements OnInit {
     this.onHotelChange.emit(id);
   }
 
+  @Output() onBooking = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  
+  public bookingHotel (event: Event, id: number) {
+    event.stopPropagation();
+    this.onBooking.emit(id);
+  }
 }

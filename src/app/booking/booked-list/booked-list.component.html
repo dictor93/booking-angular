@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Booked hotels</mat-card-title>
+  <mat-card-content>
+      <div *ngIf='(!hotels?.length > 0)' >Nothisg yest</div>
+    <mat-list>
+      <mat-list-item *ngFor='let hotel of hotels'>
+        <img *ngFor='let photo of hotel.photos' matListAvatar [src]="photo" alt="...">
+        <h3 matLine> {{hotel.title}} </h3>
+        <p matLine>
+          {{hotel.address}}
+        </p>
+        <p matLine>
+          <star-rating [readOnly]='true' [rating]='hotel.stars' [starType]="'svg'"></star-rating>
+        </p>
+        <p matLine>
+          {{hotel.description}}
+        </p>
+        <p matLine>
+          {{hotel.phone}}
+        </p>
+        <button class="unbooking-button" color="primary" (click)="unbook(hotel.id)"
+          mat-raised-button>Unbooking</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+</mat-card>

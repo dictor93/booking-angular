@@ -1,6 +1,6 @@
 <div class="list-wraper">
-    <mat-list>
-        <mat-list-item class="hotels-item" *ngFor='let hotel of hotels | filter : starsSort : searchText' (click)="selectHotel(hotel.id)">
+    <mat-action-list>
+        <mat-list-item  class="hotels-item" *ngFor='let hotel of hotels | filter : starsSort : searchText' (click)="selectHotel(hotel.id)">
             <img *ngFor='let photo of hotel.photos' matListAvatar [src]="photo" alt="...">
             <h3 matLine> {{hotel.title}} </h3>
             <p matLine>
@@ -15,7 +15,8 @@
             <p matLine>
               {{hotel.phone}}
             </p>
+            <button class="booking-button" color="primary" (click)="bookingHotel($event, hotel.id)" mat-raised-button>Booking</button>
         </mat-list-item>
-    </mat-list>
+    </mat-action-list>
     
 </div>
