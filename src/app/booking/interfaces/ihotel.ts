@@ -12,4 +12,5 @@ export interface IHotel {
   weather: IWeather;
   profile: IProfile;
   stars: number;
+  isFavorit: boolean;
 }

@@ -4,17 +4,17 @@ import { BookingComponent } from './booking.component';
 import { ListComponent } from './list/list.component';
 import { WeatherComponent } from './weather/weather.component';
 import { DetailComponent } from './detail/detail.component';
-import { MatCardModule, MatGridListModule, MatListModule, MatInputModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatGridListModule, MatListModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule } from '@angular/material';
 import { ApiMethodsService } from './api-methods.service';
 import {StarRatingModule} from 'angular-star-rating';
 import { FilterPipe } from './pipes/filter.pipe';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { BookedFilterPipe } from './pipes/booked-filter.pipe';
-import { BookedListComponent } from './booked-list/booked-list.component';
+import { HotelsListComponent } from './hotels-list/hotels-list.component';
 
 
 @NgModule({
-  declarations: [BookingComponent, ListComponent, WeatherComponent, DetailComponent, FilterPipe, BookedFilterPipe, BookedListComponent],
+  declarations: [BookingComponent, ListComponent, WeatherComponent, DetailComponent, FilterPipe, BookedFilterPipe, HotelsListComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -25,6 +25,7 @@ import { BookedListComponent } from './booked-list/booked-list.component';
     MatFormFieldModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatSnackBarModule
   ],
   exports: [
     BookingComponent,

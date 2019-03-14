@@ -26,6 +26,8 @@ export class ListComponent implements OnInit {
 
   @Output() onBooking = new EventEmitter<number>();
 
+  @Output() onFavorit = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
@@ -34,5 +36,10 @@ export class ListComponent implements OnInit {
   public bookingHotel (event: Event, id: number) {
     event.stopPropagation();
     this.onBooking.emit(id);
+  }
+
+  public toFavorit (event: Event, id: number) {
+    event.stopPropagation();
+    this.onFavorit.emit(id);
   }
 }

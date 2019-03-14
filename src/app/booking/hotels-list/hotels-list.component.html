@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Booked hotels</mat-card-title>
+  <mat-card-title>{{title}}</mat-card-title>
   <mat-card-content>
       <div *ngIf='(!hotels?.length > 0)' >Nothisg yest</div>
     <mat-list>
@@ -18,8 +18,8 @@
         <p matLine>
           {{hotel.phone}}
         </p>
-        <button class="unbooking-button" color="primary" (click)="unbook(hotel.id)"
-          mat-raised-button>Unbooking</button>
+        <button class="unbooking-button" color="error" (click)="buttonAction(hotel.id)"
+          mat-raised-button>{{buttonText}}</button>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

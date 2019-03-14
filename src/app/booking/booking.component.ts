@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiMethodsService } from './api-methods.service';
 import { IHotel } from './interfaces/ihotel';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-booking',
@@ -15,10 +16,18 @@ export class BookingComponent implements OnInit {
   public starsSort: number;
   public searchText: string;
   public bookedHotels: number[] = [];
-  constructor(private apiMethodsService: ApiMethodsService) {
+  constructor(
+    private apiMethodsService: ApiMethodsService,
+    private snackBar: MatSnackBar,
+  ) {
 
   }
   async ngOnInit() {
+    this.getHotels();
+    this.getBookings();
+  }
+
+  private getHotels() {
     this.isLoading = true;
     this.apiMethodsService.getHotels().subscribe(
       (hotels: IHotel[]) => {
@@ -39,7 +48,38 @@ export class BookingComponent implements OnInit {
     );
   }
 
-  public setStarsSort(event: {[rating: string]: number}) {
+  private getBookings() {
+    this.isLoading = true;
+    this.apiMethodsService.getBookings('default').subscribe(
+      (hotels: {bookings: number[]}) => {
+        console.log(hotels);
+        this.bookedHotels = hotels[0].bookings;
+        this.isLoading = false;
+      },
+      error => {
+        this.isLoading = false;
+        console.log(error);
+      }
+    );
+  }
+
+  private setBooking(booked: number[]) {
+    this.isLoading = true;
+    return this.apiMethodsService.setBookings('default', booked).subscribe(
+      (data: { [key: string]: any }) => {
+        if (data.ok) {
+          this.bookedHotels = booked;
+          this.snackBar.open('Hotel booked', 'OK', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'end' });
+        }
+
+      },
+      () => {
+        this.snackBar.open('Something wrong', 'OK', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'end' });
+      }
+    );
+  }
+
+  public setStarsSort(event: { [rating: string]: number }) {
     this.starsSort = event.rating;
   }
 
@@ -52,17 +92,18 @@ export class BookingComponent implements OnInit {
     this.searchText = (event.target as HTMLInputElement).value;
   }
 
-  public bookingHotel(id: number){
-    if(this.bookedHotels.includes(id)){
-      //popup err
+  public bookingHotel(id: number) {
+    console.log(id);
+    if (this.bookedHotels && this.bookedHotels.includes(id)) {
+      this.snackBar.open('This hotel is alredy booked', 'OK', { duration: 3000, verticalPosition: 'top', horizontalPosition: 'end' });
     } else {
-      this.bookedHotels = [id, ...this.bookedHotels];
-      //popup done
+      const bookedHotels = [id, ...this.bookedHotels];
+      this.setBooking(bookedHotels)
     }
   }
 
-  public unbook(id: number){
-    this.bookedHotels = this.bookedHotels.filter(hotel => !(hotel == id))
+  public unbook(id: number) {
+    const bookedHotels = this.bookedHotels.filter(hotel => !(hotel == id));
+    console.log(this.setBooking(bookedHotels));
   }
-
 }

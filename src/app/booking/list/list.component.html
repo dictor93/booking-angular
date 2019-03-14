@@ -1,22 +1,24 @@
 <div class="list-wraper">
-    <mat-action-list>
-        <mat-list-item  class="hotels-item" *ngFor='let hotel of hotels | filter : starsSort : searchText' (click)="selectHotel(hotel.id)">
-            <img *ngFor='let photo of hotel.photos' matListAvatar [src]="photo" alt="...">
-            <h3 matLine> {{hotel.title}} </h3>
-            <p matLine>
-              {{hotel.address}}
-            </p>
-            <p matLine>
-              <star-rating [readOnly]='true' [rating]='hotel.stars' [starType]="'svg'"></star-rating>
-            </p>
-            <p matLine>
-              {{hotel.description}}
-            </p>
-            <p matLine>
-              {{hotel.phone}}
-            </p>
-            <button class="booking-button" color="primary" (click)="bookingHotel($event, hotel.id)" mat-raised-button>Booking</button>
-        </mat-list-item>
-    </mat-action-list>
-    
+  <mat-action-list>
+    <mat-list-item class="hotels-item" *ngFor='let hotel of hotels | filter : starsSort : searchText'
+      (click)="selectHotel(hotel.id)">
+      <img *ngFor='let photo of hotel.photos' matListAvatar [src]="photo" alt="...">
+      <h3 matLine> {{hotel.title}} </h3>
+      <p matLine>
+        {{hotel.address}}
+      </p>
+      <p matLine>
+        <star-rating [readOnly]='true' [rating]='hotel.stars' [starType]="'svg'"></star-rating>
+      </p>
+      <p matLine>
+        {{hotel.description}}
+      </p>
+      <p matLine>
+        {{hotel.phone}}
+      </p>
+      <button class="booking-button" color="primary" (click)="bookingHotel($event, hotel.id)"
+        mat-raised-button>Booking</button>
+    </mat-list-item>
+  </mat-action-list>
+
 </div>
