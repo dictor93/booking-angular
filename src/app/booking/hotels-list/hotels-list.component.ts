@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {IHotel} from '../interfaces/ihotel';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IHotel } from '../interfaces/ihotel';
 
 @Component({
   selector: 'app-hotels-list',
@@ -14,15 +14,15 @@ export class HotelsListComponent implements OnInit {
 
   @Input() public buttonText: string;
 
-  @Output() onButtonAction = new EventEmitter<number>();
+  @Output() private onButtonAction: EventEmitter<number> = new EventEmitter<number>();
 
-  public buttonAction (id: number) {
+  public constructor() { }
+
+  public buttonAction (id: number): void {
     this.onButtonAction.emit(id);
   }
 
-  constructor() { }
-
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
 }

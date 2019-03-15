@@ -1,19 +1,22 @@
 <h1 class='title'>Booking Widget</h1>
 <div class="booking-content">
-  <div fxLayout="column" fxLayoutGap='14px'>
-    <div fxFlex='100'>
-      <app-hotels-list [hotels]='hotels | bookedFilter : bookedHotels' [title]="'Booked hotels'" [buttonText]="'Unbook'" (onButtonAction)='unbook($event)'></app-hotels-list>
-    </div>
-    <div fxFlex='100' fxLayout="row" fxLayoutGap='14px' fxLayout.xs="column" fxFlexFill>
-      <div fxFlex='66' fxFlex.xs="100">
+  <div fxLayout="row" fxLayoutGap='14px' fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
+    <div fxFlex.sm='100' fxFlex='65' fxLayout="row" fxLayoutGap='14px' fxLayout.xs="column" fxFlexFill>
+      <div [fxFlex]='100/12*8' fxFlex.xs="100">
         <mat-card class="hotels-card">
           <img mat-card-image [src]="currentHotel?.picture" alt="Loading...">
           <mat-form-field appearance="outline" color='primary' class="search-field">
-            <input matInput placeholder="Serch hotels" (input)="search($event)">
+            <input matInput placeholder="Serch hotels" [value]="searchText || ''" (input)="search($event)">
           </mat-form-field>
-          <p matLine>
-            <star-rating [starType]="'svg'" size='large' (ratingChange)="setStarsSort($event)"></star-rating>
-          </p>
+          <div flexLayout="row" fxFlexFill>
+            <div fxFlex='65'>
+              <star-rating [starType]="'svg'" size='large' [rating]="starsSort" (ratingChange)="setStarsSort($event)">
+              </star-rating>
+            </div>
+            <div fxFlex='35'>
+              <button color='primary' mat-raised-button (click)="resetFilters()">Reset</button>
+            </div>
+          </div>
           <mat-card-content>
             <h2>Hotels list</h2>
             <p *ngIf='isLoading'>Loading...</p>
@@ -22,12 +25,16 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div fxFlex='33' fxFlex.xs="100" fxLayout.xs="row" fxLayout="column" fxLayoutGap='14px'>
-        <app-weather [weather]='currentHotel?.weather' fxFlex="50%" fxLayoutAlign="start stretch" [isLoading]=isLoading>
+      <div [fxFlex]='100/12*4' fxFlex.xs="100" fxLayout.xs="row" fxLayout="column" fxLayoutGap='14px'>
+        <app-weather [weather]='currentHotel?.weather' fxFlex="45" fxLayoutAlign="start stretch" [isLoading]=isLoading>
         </app-weather>
-        <app-detail [detail]='currentHotel?.profile' fxFlex="50%" fxLayoutAlign="start stretch" [isLoading]=isLoading>
+        <app-detail [detail]='currentHotel?.profile' fxFlex="55" fxLayoutAlign="start stretch" [isLoading]=isLoading>
         </app-detail>
       </div>
+    </div>
+    <div fxFlex.sm='100'>
+      <app-hotels-list [hotels]='hotels | bookedFilter : bookedHotels' [title]="'Booked hotels'" [buttonText]="'Unbook'"
+        (onButtonAction)='unbook($event)'></app-hotels-list>
     </div>
   </div>
 </div>

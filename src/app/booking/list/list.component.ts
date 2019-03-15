@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import {IHotel} from '../interfaces/ihotel';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IHotel } from '../interfaces/ihotel';
 
 
 @Component({
@@ -19,26 +18,27 @@ export class ListComponent implements OnInit {
   @Input()
   public searchText: string;
 
-  @Output() onHotelChange = new EventEmitter<number>();
-  selectHotel: (id: number) => void = (id: number) => {
+  @Output() private onHotelChange: EventEmitter<number>  = new EventEmitter<number>();
+
+  @Output() private onBooking: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output() private onFavorit: EventEmitter<number> = new EventEmitter<number>();
+
+  public constructor() { }
+
+  public ngOnInit(): void {
+  }
+
+  public selectHotel(id: number): void {
     this.onHotelChange.emit(id);
   }
 
-  @Output() onBooking = new EventEmitter<number>();
-
-  @Output() onFavorit = new EventEmitter<number>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  public bookingHotel (event: Event, id: number) {
+  public bookingHotel (event: Event, id: number): void {
     event.stopPropagation();
     this.onBooking.emit(id);
   }
 
-  public toFavorit (event: Event, id: number) {
+  public toFavorit (event: Event, id: number): void {
     event.stopPropagation();
     this.onFavorit.emit(id);
   }

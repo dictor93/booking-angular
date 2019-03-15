@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProfile } from '../interfaces/iprofile';
 
 @Component({
@@ -13,10 +13,7 @@ export class DetailComponent implements OnInit {
 
   @Input()
   public isLoading: boolean;
-
-  constructor() { }
-
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
 }
