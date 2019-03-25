@@ -15,7 +15,6 @@ export class DrawerComponent implements OnInit {
   ) { }
 
   public drawerController(isOpen: null | boolean = null): void {
-    console.log(isOpen);
     if (isOpen !== null) {
       this.isDrawerOpen = isOpen;
     } else {
@@ -25,10 +24,10 @@ export class DrawerComponent implements OnInit {
 
 
   public ngOnInit(): void {
-    this.windowService.resizeObservable$.subscribe(small =>{
+    this.windowService.resizeObservable$.subscribe((small: boolean): void => {
       this.drawerMode = small ? 'over' : 'side';
       this.isDrawerOpen = !small;
-    })
+    });
   }
 
 }

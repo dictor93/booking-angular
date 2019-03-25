@@ -56,7 +56,6 @@ export class BookingComponent implements OnInit {
       const bookedHotels: number[] = [id, ...this.bookedHotels];
       this.setBooking(bookedHotels);
     }
-    console.log([id, ...this.bookedHotels]);
   }
 
   public unbook(id: number): void {
@@ -76,16 +75,15 @@ export class BookingComponent implements OnInit {
   private getBookings(): void {
     this.apiMethodsService.getBookings('default').subscribe(
       (hotelsId: number[]) => {
-        this.bookedHotels = hotelsId
-        console.log(this.bookedHotels)
+        this.bookedHotels = hotelsId;
       }
     );
   }
 
   private setBooking(booked: number[]): void {
     this.apiMethodsService.setBookings('default', booked).subscribe(
-      (response: {ok: boolean}) => {
-        if(response.ok){
+      (response: { ok: boolean }) => {
+        if (response.ok) {
           this.bookedHotels = booked;
         }
       }

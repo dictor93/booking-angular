@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { fromEvent, Observable } from "rxjs";
-import { filter, map, distinctUntilChanged } from 'rxjs/operators';
+import { fromEvent, Observable } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
