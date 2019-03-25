@@ -5,8 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BookingModule } from './booking/booking.module';
+import { DrawerModule } from './drawer/drawer.module';
 import { MatIconModule } from '@angular/material/icon';
+
+import { MatListModule } from '@angular/material';
 
 
 @NgModule({
@@ -18,8 +20,9 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    BookingModule,
+    DrawerModule,
     MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,9 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav [mode]="drawerMode" [opened]='isDrawerOpen' role="navigation" (closed)="drawerController(false)">
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <app-header (drawerToggle)="drawerController()"></app-header>
+    <app-booking></app-booking>
+  </mat-sidenav-content>
+</mat-sidenav-container>

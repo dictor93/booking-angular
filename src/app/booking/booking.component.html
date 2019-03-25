@@ -21,7 +21,7 @@
             <h2>Hotels list</h2>
             <p *ngIf='isLoading'>Loading...</p>
             <app-list (onHotelChange)='changeHotel($event)' (onBooking)='bookingHotel($event)' [searchText]=searchText
-              [starsSort]='starsSort' [hotels]='hotels'></app-list>
+              [starsSort]='starsSort' [hotels]='hotels$ | async'></app-list>
           </mat-card-content>
         </mat-card>
       </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div fxFlex.sm='100'>
-      <app-hotels-list [hotels]='hotels | bookedFilter : bookedHotels' [title]="'Booked hotels'" [buttonText]="'Unbook'"
+      <app-hotels-list [hotels]='hotels$ | async | bookedFilter : bookedHotels' [title]="'Booked hotels'" [buttonText]="'Unbook'"
         (onButtonAction)='unbook($event)'></app-hotels-list>
     </div>
   </div>

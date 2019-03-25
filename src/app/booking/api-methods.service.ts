@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_BASE_URL } from '../../config';
+import { Observable } from 'rxjs';
+import { IHotel } from './interfaces/ihotel';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ApiMethodsService {
@@ -8,13 +11,18 @@ export class ApiMethodsService {
   private bookingsUrl: string = `${API_BASE_URL}bookings/`;
 
   public constructor(private _http: HttpClient) { }
-  public getHotels(): Promise<{}> {                                         // Promise<IHotel[]>
-    return this._http.get(this.hotelsUrl).toPromise();
+  public getHotels(): Observable<IHotel[]> {
+    return this._http.get<IHotel[]>(this.hotelsUrl);
   }
-  public getBookings(id: string | number): Promise<{}> {                    // Promise<{id: number, hotels: number[]}>
-    return this._http.get(this.bookingsUrl + id).toPromise();
+  public getBookings(id: string | number): Observable<number[]> {
+    return this._http.get<{id: number, hotels: number[]}>(this.bookingsUrl + id).pipe(
+      map((resp: {id: number, hotels: number[]}) => {
+        // console.log(resp[0].bookings);
+        return resp[0].bookings;
+      }),
+    );
   }
-  public setBookings(id: string | number, data: number[]): Promise<{}> {    // Promise<{ok: boolean}>
-    return this._http.put(this.bookingsUrl, { _id: id, bookings: data }).toPromise();
+  public setBookings(id: string | number, data: number[]): Observable<{ok: boolean}> {
+    return this._http.put<{ok: boolean}>(this.bookingsUrl, { _id: id, bookings: data });
   }
 }
