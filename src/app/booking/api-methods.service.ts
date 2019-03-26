@@ -4,6 +4,7 @@ import { API_BASE_URL } from '../../config';
 import { Observable } from 'rxjs';
 import { IHotel } from './interfaces/ihotel';
 import { map } from 'rxjs/operators';
+import Shake from 'shake.js';
 
 @Injectable()
 export class ApiMethodsService {
@@ -24,5 +25,13 @@ export class ApiMethodsService {
   }
   public setBookings(id: string | number, data: number[]): Observable<{ok: boolean}> {
     return this._http.put<{ok: boolean}>(this.bookingsUrl, { _id: id, bookings: data });
+  }
+
+  public shakeListen(): void {
+    const shakeEvent = new Shake({threshold: 15});
+    shakeEvent.start();
+    window.addEventListener('shake', function(){
+      alert("Shaked");
+  }, false);
   }
 }

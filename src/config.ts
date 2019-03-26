@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'https://booking-endpoints.herokuapp.com/';
+export const API_BASE_URL: string = 'https://booking-endpoints.herokuapp.com/';

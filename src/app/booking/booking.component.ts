@@ -64,6 +64,7 @@ export class BookingComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.apiMethodsService.shakeListen();
     this.getHotels();
     this.getBookings();
   }

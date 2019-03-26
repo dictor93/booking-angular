@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IHotel } from '../interfaces/ihotel';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { IHotel } from '../interfaces/ihotel';
 export class ListComponent implements OnInit {
 
   @Input()
-  public hotels: IHotel;
+  public hotels$: Observable<IHotel[]>;
 
   @Input()
   public starsSort: number;
@@ -26,8 +27,7 @@ export class ListComponent implements OnInit {
 
   public constructor() { }
 
-  public ngOnInit(): void {
-  }
+  public ngOnInit(): void { }
 
   public selectHotel(id: number): void {
     this.onHotelChange.emit(id);
